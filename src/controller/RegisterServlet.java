@@ -2,6 +2,7 @@ package controller;
 
 import com.googlecode.objectify.ObjectifyService;
 import entity.Account;
+import utity.Validate;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -14,13 +15,15 @@ import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.security.Principal;
 import java.util.Enumeration;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
 public class RegisterServlet extends HttpServlet {
-
+    Validate validate = new Validate();
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
         req.getRequestDispatcher("/register.jsp").forward(req, resp);
     }
 
@@ -31,13 +34,38 @@ public class RegisterServlet extends HttpServlet {
         String fullname = req.getParameter("fullname");
         String address = req.getParameter("address");
 
-        Account account = new Account();
-        account.setUsername(username);
-        account.setPassword(password);
-        account.setFullname(fullname);
-        account.setAddress(address);
+        String errorUsername = validate.validateUsername(username);
+        String errorPassword = validate.validatePassword(password);
+        String errorFullname = validate.validateFullName(fullname);
+        String errorAddress = validate.validateAddress(address);
 
-        req.setAttribute("account", account);
-        req.getRequestDispatcher("/success.jsp").forward(req, resp);
+        HashMap<String, String> valuesField = new HashMap<>();
+        valuesField.put("usernameValue", username);
+        valuesField.put("passwordValue", password);
+        valuesField.put("fullnameValue", fullname);
+        valuesField.put("addressValue", address);
+
+        HashMap<String, String> errors = new HashMap<>();
+        errors.put("username", errorUsername);
+        errors.put("password", errorPassword);
+        errors.put("fullname", errorFullname);
+        errors.put("address", errorAddress);
+
+        if(errorAddress.equals("") && errorFullname.equals("") && errorUsername.equals("") && errorPassword.equals("")){
+            Account account = new Account();
+            account.setUsername(username);
+            account.setPassword(password);
+            account.setFullname(fullname);
+            account.setAddress(address);
+
+            req.setAttribute("account", account);
+            req.getRequestDispatcher("/success.jsp").forward(req, resp);
+        }else {
+            req.setAttribute("maperr", errors);
+            req.setAttribute("valuefields", valuesField);
+        }
+
+        req.getRequestDispatcher("/register.jsp").forward(req,resp);
+
     }
 }
