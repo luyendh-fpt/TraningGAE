@@ -49,7 +49,6 @@
     <!--<url-pattern>/*</url-pattern>-->
     <!--</servlet-mapping>-->
 
-
     <servlet>
         <servlet-name>UploadImgServlet</servlet-name>
         <servlet-class>controller.UploadImgServlet</servlet-class>
