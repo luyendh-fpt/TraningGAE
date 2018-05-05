@@ -2,11 +2,13 @@ package entity;
 
 import com.googlecode.objectify.annotation.Entity;
 import com.googlecode.objectify.annotation.Id;
+import com.googlecode.objectify.annotation.Index;
 
 @Entity
 public class Account {
     @Id
     private long id;
+    @Index
     private String username;
     private String password;
     private String fullname;
@@ -15,6 +17,11 @@ public class Account {
 
     public String getAvatar() {
         return avatar;
+    }
+
+    public Account(String username, String password) {
+        this.username = username;
+        this.password = password;
     }
 
     public void setAvatar(String avatar) {
