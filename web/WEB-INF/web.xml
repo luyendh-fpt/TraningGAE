@@ -30,6 +30,42 @@
         <servlet-name>RegisterServlet</servlet-name>
         <url-pattern>/user/register</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AccountServlet</servlet-name>
+        <servlet-class>controller.ListAccountsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AccountServlet</servlet-name>
+        <url-pattern>/user/accounts/*</url-pattern>
+    </servlet-mapping>
+
+    <!--<servlet>-->
+    <!--<servlet-name>SuccessServlet</servlet-name>-->
+    <!--<servlet-class>controller.SuccessServlet</servlet-class>-->
+    <!--</servlet>-->
+    <!--<servlet-mapping>-->
+    <!--<servlet-name>SuccessServlet</servlet-name>-->
+    <!--<url-pattern>/*</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+    <servlet>
+        <servlet-name>UploadImgServlet</servlet-name>
+        <servlet-class>controller.UploadImgServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UploadImgServlet</servlet-name>
+        <url-pattern>/upload/imgs</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ViewImgServlet</servlet-name>
+        <servlet-class>controller.ViewImgServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ViewImgServlet</servlet-name>
+        <url-pattern>/view/img/*</url-pattern>
+    </servlet-mapping>
     
     <servlet>
         <servlet-name>LoginServlet</servlet-name>
