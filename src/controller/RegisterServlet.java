@@ -33,6 +33,7 @@ public class RegisterServlet extends HttpServlet {
         String password = req.getParameter("password");
         String fullname = req.getParameter("fullname");
         String address = req.getParameter("address");
+        String avatar = req.getParameter("avatar");
 
         String errorUsername = validate.validateUsername(username);
         String errorPassword = validate.validatePassword(password);
@@ -53,11 +54,14 @@ public class RegisterServlet extends HttpServlet {
 
         if(errorAddress.equals("") && errorFullname.equals("") && errorUsername.equals("") && errorPassword.equals("")){
             Account account = new Account();
+            account.setId(System.currentTimeMillis());
             account.setUsername(username);
             account.setPassword(password);
             account.setFullname(fullname);
             account.setAddress(address);
+            account.setAvatar(avatar);
 
+            ObjectifyService.ofy().save().entity(account).now();
             req.setAttribute("account", account);
             req.getRequestDispatcher("/success.jsp").forward(req, resp);
         }else {
@@ -66,6 +70,9 @@ public class RegisterServlet extends HttpServlet {
         }
 
         req.getRequestDispatcher("/register.jsp").forward(req,resp);
+
+
+
 
     }
 }
