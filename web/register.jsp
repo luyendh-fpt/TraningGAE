@@ -10,18 +10,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
 
-    HashMap<String, String> errs = new HashMap<>();
-    HashMap<String, String> valueField = new HashMap<>();
-    String errUsername, errPassword, errFullname, errAddress;
-    errUsername = "";
-    errPassword = "";
-    errFullname = "";
-    errAddress = "";
-    String valueUsername, valuePassword, valueFullname, valueAddress;
-    valueUsername = "";
-    valuePassword = "";
-    valueFullname = "";
-    valueAddress = "";
+    HashMap<String, String> errs;
+    HashMap<String, String> valueField;
+
+    String errUsername = "", errPassword = "", errFullname = "", errAddress = "";
+    String valueUsername = "", valuePassword = "", valueFullname = "", valueAddress = "";
+
     try {
         errs = (HashMap<String, String>) request.getAttribute("maperr");
         valueField = (HashMap<String, String>) request.getAttribute("valuefields");
@@ -74,7 +68,11 @@
             </div>
             <div class="form-group"><p><%= errAddress%>
             </p></div>
-            <div class="form-group"><input class="form-control" type="avatar" name="avatar" placeholder="Avatar"></div>
+
+            <div class="form-group">
+                <input class="form-control" type="avatar" name="avatar" placeholder="Avatar" style="display: none;">
+            </div>
+
             <div class="form-group">
                 <div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox">I
                     agree to the license terms.</label></div>
@@ -86,6 +84,7 @@
 </div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.0/js/bootstrap.bundle.min.js"></script>
+
 </body>
 
 </html>

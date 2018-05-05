@@ -1,8 +1,30 @@
 package utity;
 
+import com.googlecode.objectify.ObjectifyService;
+import entity.Account;
+
 import java.util.Map;
 
 public class Validate {
+
+    public String validateUsernameLogin(String txt){
+        String error;
+        String regex = "[\\s]+";
+        if(txt == null || txt.isEmpty() || txt.matches(regex)){
+            error = MapError.mapError.get("username").getEmpty();
+            return error;
+        }
+        return "";
+    }
+
+    public String validatePasswordLogin(String txt){
+        String error;
+        if(txt == null || txt.isEmpty()){
+            error = MapError.mapError.get("password").getEmpty();
+            return error;
+        }
+        return "";
+    }
 
     public String validateUsername(String txt){
         String error;
@@ -13,6 +35,9 @@ public class Validate {
         }else if(txt.matches(regex)){
             if(txt.length() < 6){
                 error = MapError.mapError.get("username").getLength();
+                return error;
+            }else if(checkUsernameExist(txt)) {
+                error = MapError.mapError.get("username").getExistedUsername();
                 return error;
             }
             return "";
@@ -76,5 +101,13 @@ public class Validate {
             error = MapError.mapError.get("address").getCharacter();
             return error;
         }
+    }
+
+    public boolean checkUsernameExist(String username){
+        Account account = (Account) ObjectifyService.ofy().load().type(Account.class).filter("username", username).first().now();
+        if(account == null){
+            return false;
+        }
+        return true;
     }
 }

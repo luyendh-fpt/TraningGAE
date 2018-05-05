@@ -15,17 +15,9 @@ public class Account {
     private String address;
     private String avatar;
 
-    public String getAvatar() {
-        return avatar;
-    }
-
     public Account(String username, String password) {
         this.username = username;
         this.password = password;
-    }
-
-    public void setAvatar(String avatar) {
-        this.avatar = avatar;
     }
 
     public Account() {
@@ -94,5 +86,13 @@ public class Account {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
     }
 }
