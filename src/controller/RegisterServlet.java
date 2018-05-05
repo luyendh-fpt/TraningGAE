@@ -30,13 +30,17 @@ public class RegisterServlet extends HttpServlet {
         String password = req.getParameter("password");
         String fullname = req.getParameter("fullname");
         String address = req.getParameter("address");
+        String avatar = req.getParameter("avatar");
 
         Account account = new Account();
+        account.setId(System.currentTimeMillis());
         account.setUsername(username);
         account.setPassword(password);
         account.setFullname(fullname);
         account.setAddress(address);
+        account.setAvatar(avatar);
 
+        ObjectifyService.ofy().save().entity(account).now();
         req.setAttribute("account", account);
         req.getRequestDispatcher("/success.jsp").forward(req, resp);
     }

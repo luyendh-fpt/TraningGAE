@@ -27,6 +27,7 @@
             <div class="form-group"><input class="form-control" type="password" name="password-repeat" placeholder="Password (repeat)"></div>
             <div class="form-group"><input class="form-control" type="fullname" name="fullname" placeholder="Full Name"></div>
             <div class="form-group"><input class="form-control" type="address" name="address" placeholder="Address"></div>
+            <div class="form-group"><input class="form-control" type="avatar" name="avatar" placeholder="Avatar"></div>
             <div class="form-group">
                 <div class="form-check"><label class="form-check-label"><input class="form-check-input" type="checkbox">I agree to the license terms.</label></div>
             </div>

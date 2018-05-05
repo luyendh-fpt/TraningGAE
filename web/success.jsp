@@ -19,6 +19,7 @@
 <br><h2>Password : <%= account.getPassword()%></h2>
 <br><h2>Full Name : <%= account.getFullname()%></h2>
 <br><h2>Address : <%= account.getAddress()%></h2>
+<br><h2>Avatar : <%= account.getAvatar()%></h2>
 </body>
 </html>
 

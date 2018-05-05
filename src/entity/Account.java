@@ -11,8 +11,26 @@ public class Account {
     private String password;
     private String fullname;
     private String address;
+    private String avatar;
+
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
 
     public Account() {
+    }
+
+    public Account(long id, String username, String password, String fullname, String address, String avatar) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.fullname = fullname;
+        this.address = address;
+        this.avatar = avatar;
     }
 
     public Account(String username, String password, String fullname, String address) {
