@@ -27,6 +27,7 @@ public class UploadImgServlet extends HttpServlet {
             return;
         }
         String result = req.getRequestURL().toString().replace(req.getRequestURI(), "/view/img/") + bk.getKeyString();
-        resp.getWriter().print(result);
+        resp.setContentType("application/json");
+        resp.getWriter().write(result);
     }
 }

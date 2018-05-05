@@ -12,6 +12,7 @@
     <title>FOCUS TEAM</title>
   </head>
   <body>
+
     <br><%@include file="login.jsp" %>
     <!--<button class="btn-primary" type="button" style="width: 100px; margin: 100px" >LOGIN</button>
     <button class="btn-primary" type="button" onclick="javascript:window.location=register.jsp" style="width: 100px; margin: 50px">REGISTER</button> -->
