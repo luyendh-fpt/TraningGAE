@@ -34,7 +34,7 @@ public class ListAccountsServlet extends HttpServlet {
 
         count = ObjectifyService.ofy().load().type(Account.class).count();
 
-        totalPage = (int) Math.ceil(count/limit);
+        totalPage = (int) Math.ceil((double)count/(double)limit);
 
         req.setAttribute("page", page);
         req.setAttribute("limit", limit);
