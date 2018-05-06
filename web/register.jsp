@@ -72,7 +72,7 @@
             </p></div>
 
             <div class="form-group">
-                <input class="form-control" type="avatar" name="avatar" placeholder="Avatar" style="display: none;">
+                <input class="form-control" type="avatar" name="avatar" placeholder="Avatar" style="display: none;" value="<%= valueAvatar%>">
             </div>
             <div class="form-group">
               <input class="form-control" type="file" id="img-file">
