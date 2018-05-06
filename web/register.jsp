@@ -14,20 +14,22 @@
     HashMap<String, String> valueField;
 
     String errUsername = "", errPassword = "", errFullname = "", errAddress = "";
-    String valueUsername = "", valuePassword = "", valueFullname = "", valueAddress = "";
+    String valueUsername = "", valuePassword = "", valueFullname = "", valueAddress = "", valueAvatar = "/assets/img/meeting.jpg";
 
     try {
         errs = (HashMap<String, String>) request.getAttribute("maperr");
         valueField = (HashMap<String, String>) request.getAttribute("valuefields");
+
         errUsername = errs.get("username");
         errPassword = errs.get("password");
         errFullname = errs.get("fullname");
         errAddress = errs.get("address");
+
         valueUsername = valueField.get("usernameValue");
         valuePassword = valueField.get("passwordValue");
         valueFullname = valueField.get("fullnameValue");
         valueAddress = valueField.get("addressValue");
-
+        valueAvatar = valueField.get("avatarValue");
     } catch (Exception e) {
         System.out.println("map rong");
     }
@@ -46,7 +48,7 @@
 <body>
 <div class="register-photo" style="height:650px;">
     <div class="form-container">
-        <div class="image-holder" id="avatar-demo"></div>
+        <div class="image-holder" id="avatar-demo" style="background-image: url('<%= valueAvatar%>')"></div>
         <form method="post" action="/user/register" name="registerForm">
             <h2 class="text-center"><strong>Create</strong> an Account</h2>
 

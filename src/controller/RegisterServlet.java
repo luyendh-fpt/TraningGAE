@@ -45,6 +45,7 @@ public class RegisterServlet extends HttpServlet {
         valuesField.put("passwordValue", password);
         valuesField.put("fullnameValue", fullname);
         valuesField.put("addressValue", address);
+        valuesField.put("avatarValue", avatar);
 
         HashMap<String, String> errors = new HashMap<>();
         errors.put("username", errorUsername);
